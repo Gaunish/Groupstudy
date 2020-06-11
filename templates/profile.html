@@ -1,0 +1,67 @@
+{% extends 'layout2.html' %}
+
+{% block title %}}
+    Create Topic
+{% endblock %}
+
+{% block style %}
+        body
+        {
+            background : linear-gradient(to right, #DAE0E6 0%, #DAE0E6 11%, white 11%, white 89%, #DAE0E6 89%, #DAE0E6 100%);
+        }
+
+        #head1
+        {
+            margin-top : 80px;
+            margin-left : 520px;
+            font-size : 100px;  
+            font-family : serif;
+        }
+
+{% endblock %}
+
+{% block main %}
+    <div class = "row">
+        <h1 id = "head1"> Profile Page </h1>
+    </div>
+
+    <div class = "row">
+            <div class="shadow card border-primary text-center"
+                style="width : 550px; height : 680px; margin-top : 60px; margin-left : 500px;">
+                <div class="card-body text-secondary">
+                    <h3 class="card-title"> Name </h3>
+                    <form action="/changepassword" method="post">
+                        <br>
+                        <br>
+                        <div class="form-group">
+                            <h5 style="float : left;"> Email-ID </h5>
+                            <input autocomplete="off" autofocus class="form-control" name="topic" placeholder="Topic"
+                                type="text">
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <h5 style="float : left;"> Current Password </h5>
+                            <input class="form-control" id="FormGroup" placeholder="Password">
+                        </input>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <h5 style="float : left;"> New Password </h5>
+                            <input class="form-control" id="exampleFormControlTextarea1" 
+                                placeholder="New Password"></input>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <h5 style="float : left;"> New Password </h5>
+                            <input class="form-control" id="exampleFormControlTextarea1" placeholder="New Password"></input>
+                        </div>
+                        <br>
+                        <br>
+                        <button class="btn btn-primary " type="submit">Create</button>
+                        <br>
+                    </form>
+                </div>
+            </div>
+
+    </div>
+{% endblock %}

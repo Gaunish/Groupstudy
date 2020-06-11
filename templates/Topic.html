@@ -1,0 +1,62 @@
+{% extends 'layout2.html' %}
+
+{% block title %}
+    Topic Name
+{% endblock %}
+
+{% block style %}
+        #cardright
+        {
+            width : 250px; 
+            height : 460px; 
+            margin-top : 50px; 
+            margin-left : 50px;
+        }
+        #cardcenter
+        {
+            width : 750px; 
+            height : 460px; 
+            margin-top : 50px; 
+            margin-left : 270px;
+        }
+        #cardcont
+        {
+            width : 750px; 
+            height : 200px; 
+            margin-top : 40px; 
+            margin-left : 270px;
+        }
+{% endblock %}
+
+{% block main %}
+
+      <div class = "row">
+              <div class = "col-8">
+              <div class = "card text-left" id = "cardcenter">
+                  <div class="card-header">Username date</div>
+                  <div class="card-body text-info">
+                     <h3 class="card-title">Topic</h3>
+                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  </div>
+              </div>
+
+              <div class = "card text-left" id = "cardcont">
+                    <div class="card-body text-secondary">
+                        Username date
+                       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+              </div>
+              </div>
+
+              <div class = "col-4">
+              <div class = "card" id = "cardright">
+              <div class="card-body text-secondary">
+                   <h4 class="card-title">Group</h4>
+                   <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              </div>
+              </div>
+              </div>
+      </div>
+
+
+{% endblock %}

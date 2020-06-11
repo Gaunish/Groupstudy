@@ -1,0 +1,5 @@
+{
+    "python.pythonPath": "myenv\\Scripts\\python.exe",
+    "java.dependency.packagePresentation": "hierarchical",
+    "java.dependency.syncWithFolderExplorer": false
+}

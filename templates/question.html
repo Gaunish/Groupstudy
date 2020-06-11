@@ -1,0 +1,72 @@
+{% extends 'layout2.html' %}
+
+{% block title %}
+    Create Topic
+{% endblock %}
+
+{% block style %}
+    body
+    {
+        background : linear-gradient(to right, #4d4d4d 0%, #4d4d4d 6%, #DAE0E6 6%, #DAE0E6 94%, #4d4d4d 94%, #4d4d4d 100%);
+    }
+
+    #cardright
+    {
+        width : 300px;
+        height : 280px;
+        margin-top : 150px;
+        margin-left :260px;
+    }
+
+    #cardmid
+    {
+        width : 800px;
+        min-height : 800px;
+        overflow : hidden;
+        margin-top : 150px;
+        margin-left : 210px;
+    }   
+
+    #cardtop
+    {
+        background : black;
+        color : white;
+        width : 88%;
+        margin-left : 6%;
+        height : 60px;
+        margin-top : 58px;     
+    }
+{% endblock %}
+
+{% block main %}
+    <div class = "row">
+        <div class="card text-left fixed-top" id="cardtop">
+            <div class="card-body">
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                    content.</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <div class="card text-left" id="cardmid">
+                <div class="card-body">
+                    <h3 class="card-title">Topic</h3>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-4">
+            <div class="card" id="cardright">
+                <div class="card-body">
+                    <h4 class="card-title">Group</h4>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                        content.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

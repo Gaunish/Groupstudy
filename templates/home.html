@@ -1,0 +1,132 @@
+{% extends 'layout2.html' %}
+
+{% block title %}
+    HomePage
+{% endblock %}
+
+{% block style %}
+    #cardmid
+     {
+         width : 600px; 
+         height : 500px; 
+         margin-top : 50px; 
+         margin-left : 313px;
+     }
+
+     #cardright
+     {
+         width : 280px; 
+         height : 350px; 
+         margin-top : 30px;
+         margin-left :182px;
+     }
+
+     #cardtop
+     {
+         width : 210px;
+         height : 200px;
+         margin-bottom : 10px;
+         margin-top : 30px;
+         margin-left : 25px;
+         border-radius : 10px;
+         overflow : hidden ;
+     }
+
+     #cardmid2
+     {
+            width : 600px;
+            height : 50px;
+            margin-top : 30px;
+            margin-left : 313px;
+     }
+
+     .cardtitle1
+     {
+        font-size : 20px;
+        font-weight: bold;
+        color: gray;
+        margin-top : -10px !important;
+     }
+
+     .main2
+     {
+         background-color : #DAE0E6 !important; 
+     }
+{% endblock %}
+
+{% block main %}
+   <div class="row main2" style = "margin-top: 50px;">
+         <h6 style= "margin-left: 338px;">Trending Today</h6>
+         <div class="card text-left" id="cardtop" style= "margin-left: -120px;">     
+            <div class="card-body">
+               <h3 class="card-title">Topic</h3>
+               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                  content.</p>
+            </div>
+         </div>
+         <div class="card text-left" id="cardtop">
+            <div class="card-body">
+               <h3 class="card-title">Topic</h3>
+               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                  content.</p>
+            </div>
+         </div>   
+         <div class="card text-left" id="cardtop">
+            <div class="card-body">
+               <h3 class="card-title">Topic</h3>
+               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                  content.</p>
+               </div>
+         </div>      
+         <div class="card text-left" id="cardtop">
+            <div class="card-body">
+               <h3 class="card-title">Topic</h3>
+               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                  content.</p>
+            </div>
+         </div>
+   </div>
+   <div class = "row main2">
+      <div class = "col-6">
+            <div class = "card text-left" id = "cardmid2">
+                  <div class="card-body">
+                     <div class = "cardtitle1">Popular Post</div>
+                  </div>
+          </div>
+          <div class = "card text-left" style= "margin-top: 40px;" id = "cardmid">
+                <div class="card-body">
+                   <h3 class="card-title">Topic</h3>
+                   <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+        </div>
+        <div class = "card text-left" id = "cardmid">
+              <div class="card-body">
+                 <h3 class="card-title">Topic</h3>
+                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              </div>
+      </div>
+      <div class = "card text-left" id = "cardmid">
+            <div class="card-body">
+               <h3 class="card-title">Topic</h3>
+               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+    </div>
+      </div>
+
+      <div class = "col-4">
+      <div class = "card" id = "cardright">
+      <div class="card-body">
+           <h4 class="card-title">Group</h4>
+           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      </div>
+      </div>
+
+      <div class = "card" id = "cardright">
+      <div class="card-body">
+           <h4 class="card-title">Group</h4>
+           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      </div>
+      </div>
+      </div>
+</div>
+{% endblock %}

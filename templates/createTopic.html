@@ -1,0 +1,113 @@
+{% extends 'layout2.html' %}
+
+{% block title %}
+    Create Topic
+{% endblock %}
+
+{% block style %}
+
+
+      #sideheader
+      {
+            color : white; 
+            font-size : 40px;
+            text-align: center; 
+            padding-top: 15px; 
+            font-family: 'Arial';
+            padding-bottom : 85px;
+            margin-top : 50px;
+      }
+
+      #sidernav
+      {
+            background: #0066cc;
+            min-height : 100vh; 
+      }
+
+      li 
+      {
+            color : white;
+            font-size : 20px;
+            text-align : center;
+            height : 40px;  
+            padding-top : 5px;
+            margin-bottom : 15px;
+      }
+
+      li:hover
+      {
+            color : #white;
+            background : #002266;
+      }
+
+      #visiting
+      {
+            color : #0066cc;
+            background : white;
+            border-right : 6px solid #ffa64d;
+      }
+      
+      a, a:hover
+      {
+            color: inherit;
+            text-decoration: none;
+            transition: all 0.3s;
+      }
+
+
+
+{% endblock %}
+
+{% block main %}
+            <div class = "row">
+            <div class = "col-2 overflow-auto">
+                  <nav id = "sidernav">
+                              <div id = "sideheader">
+                                    <h1>Topics</h1>
+                              </div>
+
+                              <ul class = "list-unstyled">
+                                    <li id = "visiting">
+                                          <a href="/" class = "sidea">Option 1</a>
+                                    </li>
+                                    
+                                    <li>
+                                          <a href="/" class="sidea"> Option 2</a>
+                                    </li>
+                              </ul>
+                  
+                  </nav>
+            </div>
+
+            <div class = "col-10">
+               <div class = "shadow card border-primary text-center" style = "width : 550px; height : 680px; margin-top : 60px; margin-left : 310px;">
+                    <div class="card-body text-secondary">
+                    <h3 class = "card-title"> Open Discussion </h3>
+                    <form action="/login" method="post">
+                         <br>
+                         <br>
+                         <div class="form-group">
+                              <h5 style = "float : left;"> Topic Name </h5>
+                              <input autocomplete="off" autofocus class="form-control" name="topic" placeholder = "Topic" type="text">
+                          </div>
+                          <br>
+                          <div class="form-group">
+                               <h5 style = "float : left;"> Choose Group </h5>
+                                <select class="form-control" id="FormGroup">
+                                      <option> Random </option>
+                                </select>
+                           </div>
+                          <br>
+                          <div class="form-group">
+                              <h5 style = "float : left;"> Description </h5>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="8" placeholder="Enter description Of Topic Here!"></textarea>
+                          </div>
+                          <br>
+                          <button class="btn btn-primary " type="submit">Create</button>
+                          <br>
+                      </form>
+                    </div>
+               </div>
+            </div>
+      </div>
+{% endblock %}

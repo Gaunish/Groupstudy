@@ -1,0 +1,61 @@
+{% extends 'layout2.html' %}
+
+{% block title %}}
+    Create Topic
+{% endblock %}
+
+{% block style %}
+    body
+    {
+        background : linear-gradient(to right, #DAE0E6 0%, #DAE0E6 11%, white 11%, white 89%, #DAE0E6 89%, #DAE0E6 100%);
+    }
+
+    #table1
+    {
+            margin-left : 11%;
+            width : 78.2%;
+            margin-top : 50px;
+    }
+
+    tr
+    {
+            height : 40px;    
+    }
+{% endblock %}
+
+{% block main %}
+    <table class="table table-hover" id = "table1">
+        <thead class="thead-dark"> 
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Handle</th>
+                <th scope="col">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+                <td>open</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+                <td>open</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+            </tr>
+        </tbody>
+    </table>
+
+{% endblock %}
