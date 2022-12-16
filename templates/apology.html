@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Apology
+{% endblock %}
+
+{% block navigation %}
+
+         <img src =  "{{ url_for('static',filename='favicon32.png') }}" align = "left" alt = "icon" height = "32" width = "32">
+          <a href = "/" class = "navbar-brand" id = "navtitle"> GroupStudy </a>
+
+{% endblock %}
+
+
+{% block main %}
+    <img alt="{{ top }}" class="border" src="http://memegen.link/custom/{{ top | urlencode }}/{{ bottom | urlencode }}.jpg?alt=https://i.imgur.com/CsCgN7Ll.png" title="{{ top }}" style = "margin-left : 30%">
+{% endblock %}

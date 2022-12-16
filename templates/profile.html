@@ -1,0 +1,226 @@
+.{% extends 'layout2.html' %}
+
+{% block title %}}
+    Create Topic
+{% endblock %}
+
+{% block style %}
+        body
+        {
+            background : #DAE0E6;
+        } 
+
+        .card-profile
+        {
+            margin-left : 200px;
+            margin-top : 80px;
+            height : 250px;
+            width : 310px;
+            padding-left : 14px;
+        }
+
+        .row_profile
+        {
+            height : 70px;
+            width : 311px;
+            background : #1AA1F5;
+        }
+
+        .font_txt1
+        {
+            font-size : 23px;
+            padding-left : 30px;
+            margin-top : 20px;
+        }
+
+        .font_txt
+        {
+            margin-top : 5px;
+            padding-left : 30px;
+        }
+
+        .profile_btn
+        {
+            border-radius : 20px;
+            width : 280px;
+            margin-top : 30px;
+        }
+
+        .ques_a
+        {
+            color:inherit;
+            text-decoration:inherit; 
+            width : 280px;
+            margin-left : 15px;  
+        }
+
+        .verify-card
+        {
+            margin-left : 200px;
+            margin-top : 80px;
+            width : 700px;
+            height : 150px;
+        }
+
+        .info-display-card
+        {
+            margin-left : 200px;
+            margin-top : 50px;
+            width : 700px;
+            height : 300px;
+        }
+
+        .info_txt
+        {
+            font-size : 23px;
+            margin-left : 50px;
+            margin-top : 50px;
+            font-weight : 650;
+        }
+
+        .info_txt1
+        {
+            font-size : 16px;
+            font-weight : 600;
+        }
+
+        .info_txt2
+        {
+            font-size : 16px;
+            font-weight : 600;
+        }
+
+        .vertical_line 
+        {
+            border-left: 0.1px solid #bbbbbb;
+            height : 136px;
+        }
+
+        .vertical_line1 
+        {
+            border-left: 0.1px solid #bbbbbb;
+            height : 110px;
+            margin-top : 10px;
+        }
+
+        .verify-text
+        {
+            font-size : 40px;
+            font-weight : 300;
+            margin-left : 180px;
+            margin-top : 10px;
+        }
+
+        .verify-btn
+        {
+            width : 300px;
+            border-radius : 40px;
+            margin-top : 13px;
+        }
+
+        .verify_a
+        {
+            color:inherit;
+            text-decoration:inherit;
+            width : 300px;
+            margin-left : 180px;
+        }
+
+        .display_row
+        {
+            margin-top : 30px;
+            margin-left : 120px;
+        }
+
+        .display_row1
+        {
+            margin-top : 25px;
+        }
+
+{% endblock %}
+
+{% block main %}
+    <div class = "row">
+        <div class = "col-3">
+            <div class = "card text-left card-profile">
+                <div class = "row row_profile"></div>
+                <div class = "row font_txt1" style = ""><b>{{user_info[1]}}</b></div>
+                
+                <div class = "row font_txt">
+                {% if user_info[4] == True %}
+                    Verified User
+                {% else %}
+                    Unverified User
+                {% endif %}
+                </div>
+
+                <div class = "row">
+                    <a href = "/create_ques" class = "ques_a"><div class = "btn btn-primary profile_btn"> Ask A question </div></a>
+                </div>
+            </div>
+        </div>
+
+        <div class = "col-7">
+            <div class = "row">
+                <div class = "card verify-card">
+                    {% if user_info[4] == True %}
+                        <div class = "row info_txt1 display_row">
+                            Verified Email-ID
+                            <div style = "margin-left : 150px;">GroupStudy Birthday</div>
+                        </div>
+                        <div class = "row info_txt1 display_row1" style = "font-weight : 100;">
+                            <div class = "col-7"><div style = "text-align:center;">{{user_info[2]}}</div></div>
+                            <div class = "col-3"><div style = "margin-left:40px">{{birth_date}}</div></div>
+                        </div>
+                    {% else %}
+                        <div class = "verify-text">Still Not Verified !</div>
+                        <a href = "/verify_now" class = "verify_a"><div class = "btn btn-primary verify-btn"> Verify Now </div></a>
+                    {% endif %}
+                </div>
+            </div>
+            <div class = "row">
+                <div class = "card info-display-card">
+                    <div class = "row" style = "height : 40%;">
+                        <div class = "col-3"><div class = "info_txt"> Topics </div></div>
+                        <div class = "vertical_line1"> </div>
+
+                        <div class = "col-7">
+                            <div class = "row info_txt1" style = "margin-top : 35px; margin-left : 135px;">
+                                Following
+                                <div style = "margin-left : 65px;">Created</div>
+                            </div>
+                            <div class = "row info_txt2" style = "margin-top : 15px; margin-left : 170px;">
+                                {{user_analytics[0]}}
+                                <div style = "margin-left : 120px;">{{user_analytics[1]}}</div>
+                            </div>
+                        </div>
+                    
+                    </div>
+
+                    <hr>
+                    
+                    <div class = "row">
+                        <div class = "col-3"><div class = "info_txt" style = "margin-left : 56px;">Posts</div></div>
+                        <div class = "vertical_line"> </div>
+                        
+                        <div class = "col-7" style = "margin-top : 25px; margin-left : 75px;">
+                            <div class = "row info_txt1">
+                                Following
+                                <div style = "margin-left : 85px;">Liked </div>
+                                <div style = "margin-left : 90px;">Disliked</div>
+                            </div>
+                            <div class = "row info_txt2" style = "margin-top : 23px; margin-left : 20px;">
+                                {{user_analytics[2]}}
+                                <div style = "margin-left : 132px;">{{user_analytics[3]}}</div>
+                                <div style = "margin-left : 132px;">{{user_analytics[4]}}</div>
+                            </div>
+                        </div>
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style = "margin-bottom : 50px;">
+{% endblock %}

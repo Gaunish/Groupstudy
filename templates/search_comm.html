@@ -1,0 +1,208 @@
+{% extends 'layout2.html' %}
+
+{% block title %}
+    Search
+{% endblock %}
+
+{% block style %}
+    html 
+    {
+        height: 100%;
+    }   
+
+    body
+    {
+        background-color : #DAE0E6 !important;
+    }
+    
+    .title-text1
+    {
+        margin-top : -5px;
+        margin-left : 60px;
+    }
+
+    .head-title
+    {
+        margin-top : 55px;
+        margin-left : 60px;
+    }
+
+    .cardmid
+    {
+        width : 1065px; 
+        height : auto; 
+        margin-top : 30px;
+        margin-left : 40px; 
+        padding : 20px;   
+        overflow : auto;
+    }
+
+    .cardright
+    {
+        width : 300px;
+        height : 200px;
+        margin-left : 10px;
+        margin-top : 30px;
+        padding : 20px;
+    }
+
+    .grayfont
+    {
+        color : gray;
+        font-family: Noto Sans,Arial,sans-serif;
+        font-size: 13.2px;
+    }
+
+    .liner
+    {
+        border : 0.1px solid #bbbbbb;
+    }
+
+    .topic_header
+    {
+        background-color : white;
+        height : 200px;
+    }
+
+    .navhor 
+    {
+        margin-top : 46px;
+        margin-left : 43px;
+        font-weight : bold;
+        font-family : Verdana, sans-serif;
+    }
+
+
+    .underliner
+    {
+        border : 2px solid blue;
+        margin-top : 2px;
+        margin-left : 252px;
+        width : 110px;
+    }
+
+    a.nav_a
+    {
+        color:inherit;
+        text-decoration:inherit;
+    }
+
+    a.nav_a:hover
+    {
+        color : black;
+    }
+
+    .rowedd
+    {
+        height : 50px; 
+    }
+
+    .follow_btn
+    {
+        height : 30px;
+        width : 120px;
+        font-size : 12px;
+        padding-top : 3.5px;
+        padding-bottom : 3.5px;
+        border-radius : 40px;
+        margin-top : 5px;
+    }
+
+    a.carded
+    {
+        color:inherit;
+        text-decoration:inherit;
+    }
+
+    .topic_header_font
+    {
+        font-family: Noto Sans,Arial,sans-serif;
+        font-size: 15px;
+        margin-top : -5px;
+    }
+
+    .btn_comm
+    {
+        width : 210px; 
+        border-radius : 20px; 
+        margin-left : 25px;
+        margin-top : 10px;
+    }
+
+    .header_font_2
+    {
+        font-size: 20px; 
+        text-align : center; 
+        margin-top : 25px;
+    }
+{% endblock %}
+
+{% block main %}
+    <div class = "topic_header">
+    <div class = "row">
+        <div class = "head-title"><h1><b>{{query_text}}</b></h1></div>
+    </div>
+
+    <div class = "row">
+        <div class = "title-text1 grayfont"> Search Results </div>
+    </div>
+
+    <div class = "row navhor">
+        <div style = "color : gray"><a class = "nav_a" href = "{{ url_for('search_texted_get', query_text = query_text)}}"> Best Results</a></div>
+        <div style = "color : gray; margin-left : 30px;"><a class = "nav_a" href = "{{ url_for('post_text', query_text = query_text)}}">Posts</a></div>
+        <div style = "margin-left : 30px;"><h8>Communities</h8></div>
+    </div>
+
+    <div class = "row"> <hr class = "underliner"></div>
+
+    </div>
+
+    <div class = "row">
+        <div class = "col-9">
+            <div class = "card text-left cardmid">
+                
+                <div class = "grayfont"><b>COMMUNITIES</b></div> 
+                <hr style = "margin-top : 2px;" class = "liner">
+                {% for row in topic_total %}
+                <a class = "carded" href = "{{url_for('dynamic_topic', topic_id = row[0])}}">
+                    <div class = "row rowedd">
+                        <div class = "col-2"><b> {{row[1]}} </b></div>
+                        <div class = "col-8 grayfont"> {{row[2]}} </div>
+                         <div class = "col-2"> 
+                            <form action = "{{url_for('dynamic_topic', topic_id = row[0])}}" method="post">
+                                {%if row[6] == True%}
+                                <button class="btn btn-outline-primary follow_btn" type="submit">Disjoin</button> 
+                                {%else%}
+                                <button class="btn btn-primary follow_btn" type="submit">Join</button>  
+                                {%endif%}
+                            </form>
+                        </div>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+
+            <div style = "margin-bottom : 20px;"> </div>
+        </div>
+
+        <div class = "col-3">
+            <div class = "card text-left cardright">
+                <form action="/create_comm" method="get">
+                <div class = "topic_header_font header_font_2" style = ""><b>Have an idea for new community?</b></div>
+                <button class = "btn btn-primary btn_comm" type = "submit"> Create Now ! </button>
+                </form>
+            </div>
+
+            <div class = "card cardright" style = "height : 100px;">
+                <div class = "card-body">
+                <div class = "topic_header_font">
+                    <div style = "margin-top : -20px;"></div>
+                    <b>Copyright ©	Gaunish Garg</b> 
+                    <div style = "margin-top : 2px;"></div>
+                    All rights reserved. Based on Reddit
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

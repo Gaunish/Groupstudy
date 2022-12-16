@@ -1,0 +1,6 @@
+{
+    "python.pythonPath": "/usr/bin/python3",
+    "java.dependency.packagePresentation": "hierarchical",
+    "java.dependency.syncWithFolderExplorer": false,
+    "python.formatting.provider": "black"
+}

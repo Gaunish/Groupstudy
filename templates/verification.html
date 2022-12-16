@@ -1,0 +1,64 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block navigation %}
+    <img src =  "{{ url_for('static',filename='favicon32.png') }}" align = "left" alt = "icon" height = "32" width = "32">
+    <a href = "/" class = "navbar-brand" id = "navtitle"> GroupStudy </a>
+{% endblock %}
+
+{% block style %}
+    
+    body
+    {
+        background-color : #DAE0E6 !important; 
+    }
+    
+
+    .main_card
+    {
+        width : 370px; 
+        height : 400px;
+        margin-top : 100px;
+        margin-bottom : 80px;
+        margin-left : 550px;   
+    }
+
+    .input_verify
+    {
+        margin-top : -1px;
+        margin-bottom : 15px;
+        border-radius : 20px;
+        text-align : center;    
+    }
+
+{% endblock %}
+
+{% block main %}
+
+        <div class = "shadow card text-center main_card">
+
+            <div class = "card-body">
+                
+                <h3> Verify your Account </h3>
+                <hr style = "border : 0.01px solid #dddddd; border-radius : 20px;">
+                <form action="/verification" method="post">
+
+
+                     <div class="form-group">
+                         <h5 style = "margin-top : 70px;">Enter OTP </h5>
+                         <input class="form-control input_verify" name="otp" type="password">
+                     </div>
+
+                     <button class="btn btn-primary" style = "border-radius : 20px; width : 120px;" type="submit">Register</button>
+                
+                </form>
+            
+            </div>
+            
+        </div>
+
+{% endblock %}
+

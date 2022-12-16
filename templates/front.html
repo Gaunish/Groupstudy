@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Main Page
+{% endblock %}
+
+{% block navigation %}
+
+
+          <img src =  "{{ url_for('static',filename='favicon32.png') }}" align = "left" alt = "icon" height = "32" width = "32">
+          <a href = "/" class = "navbar-brand" id = "navtitle"> GroupStudy </a>
+
+          <a href = "/login">
+              <button type="button" class="btn btn-info" style = "margin-left: 1000px;">
+                  Get Started!
+              </button>
+          </a>
+
+
+{% endblock %}
+
+{% block main %}
+
+       <div class = "row">
+       <div id = "column" style = "margin-top : 150px;">
+
+         <span id = "content1"> Welcome To <span style = "color : #3333cc;">GroupStudy</span>!</span>
+         <div id = "content1"> A Place To Grow Together. </div>
+         <p id = "content2"> Create Study Topics . Contribute To Better Understanding . Create A Community. </p>
+
+       </div>
+
+       <div id = "column" style = "margin-top : 20px;">
+          <img src = "{{url_for('static', filename='background.jpg')}}" id = "img1" >
+       </div>
+       </div>
+
+{% endblock %}

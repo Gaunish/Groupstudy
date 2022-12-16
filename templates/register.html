@@ -1,0 +1,71 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block navigation %}
+
+
+          <img src =  "{{ url_for('static',filename='favicon32.png') }}" align = "left" alt = "icon" height = "32" width = "32">
+          <a href = "/" class = "navbar-brand" id = "navtitle"> GroupStudy </a>
+
+{% endblock %}
+
+{% block main %}
+    <div id = "row">
+
+        <div id = "column" style = "margin-top : 220px;">
+
+            <span id = "content1"> Get Started For Free ! </span>
+        </div>
+
+        <div id = "column" style = "margin-top : 30px;">
+        <div class = "shadow card text-center" style = "width : 450px; height : 550px;">
+
+            <div class = "card-header">
+                <ul class = "nav nav-tabs card-header-tabs">
+                    <li class = "nav-item">
+                        <a class = "nav-link" href = "/login"> Log In </a>
+                    </li>
+                    <li class = "nav-item">
+                        <a class = "nav-link active" href = "/register"> Register </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class = "card-body">
+                <form action="/register" method="post">
+
+                    <br>
+                    <div class="form-group">
+                         <h5 style = "float : left;"> Username </h5>
+                         <input autocomplete="off" autofocus class="form-control" name="username" placeholder="Username" type="text">
+                    </div>
+
+                     <div class="form-group">
+                          <h5 style = "float : left;"> Email ID </h5>
+                          <input autocomplete="off" autofocus class="form-control" name="email" placeholder="Email ID" type="email">
+                      </div>
+
+                     <div class="form-group">
+                         <h5 style = "float : left;"> Password </h5>
+                         <input class="form-control" name="password" placeholder="Password" type="password">
+                     </div>
+
+                     <div class="form-group">
+                         <h5 style = "float : left;"> Confirm Password </h5>
+                         <input class="form-control" name="confirm-password" placeholder="Confirm Password" type="password">
+                     </div>
+
+                     <br>
+                     <br>
+                     <button class="btn btn-primary" type="submit" style = "width:150px; border-radius:25px;">Register</button>
+                </form>
+            </div>
+            
+        </div>
+        </div>
+    </div>
+
+{% endblock %}

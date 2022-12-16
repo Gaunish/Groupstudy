@@ -1,0 +1,121 @@
+{% extends 'layout2.html' %}
+
+{% block title %}
+    Create Topic
+{% endblock %}
+
+{% block style %}
+        body
+        {
+            background: #DAE0E6;
+        }
+
+        #sideheader
+        {
+            color : white;
+            font-size : 40px;
+            text-align: center;
+            padding-top: 15px;
+            font-family: 'Arial';
+            padding-bottom : 85px;
+            margin-top : 40px;
+        }
+
+        #sidernav
+        {
+            background: #4d4d4d;
+            min-height : 100vh;
+        }
+
+        li
+        {
+            color : white;
+            font-size : 20px;
+            text-align : center;
+            height : 40px;
+            padding-top : 5px;
+            margin-bottom : 15px;
+            border-radius : 5px;
+        }
+
+        li:hover
+        {
+            color : #4d4d4d;
+            background : white;
+        }
+
+        #visiting
+        {
+            color : #0066cc;
+            background : white;
+            border-right : 6px solid #ffa64d;
+        }
+
+        a, a:hover
+        {
+            color: inherit;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+
+
+{% endblock %}
+
+{% block main %}
+        <div class="row">
+            <div class="col-2">
+                <nav id="sidernav">
+                    <div id="sideheader">
+                        <h1>Community</h1>
+                    </div>
+
+                    <ul class="list-unstyled">
+                        <li id="visiting">
+                            <a href="/create_comm" class="sidea">Create</a>
+                        </li>
+
+                        <li>
+                            <a href="/follow_comm" class="sidea">Following</a>
+                        </li>
+
+                         <li>
+                            <a href="/created_comm" class="sidea">Created</a>
+                        </li>
+                    </ul>
+
+                </nav>
+            </div>
+            <div class = "col-10">
+                <div class = "shadow card border-primary text-center" style = "width : 550px; height : 660px; margin-top : 60px; margin-left : 310px; ">
+                    <div class="card-body text-secondary">
+                        <h3 class = "card-title"> Create Community </h3>
+                            <form action="/create_comm" method="post">
+                                <br>
+                                <br>
+                                <div class="form-group">
+                                    <h5 style = "float : left;"> Title </h5>
+                                    <input autocomplete="off" autofocus class="form-control" name="topic" placeholder = "Name of Community" type="text">
+                                </div>
+                                <br>
+                                
+                                 <div class="form-group">
+                                    <h5 style = "float : left;"> Abstract </h5>
+                                    <input autocomplete="off" autofocus class="form-control" name="abstracted" placeholder = "Abstract" type="text">
+                                </div>
+
+
+                                <br>
+                                <div class="form-group">
+                                    <h5 style = "float : left;"> Description </h5>
+                                    <textarea class="form-control" name="textarea1" rows="8" placeholder="Enter description Of Community Here!"></textarea>
+                                </div>
+                                <br>
+                
+                                <button class="btn btn-primary " type="submit">Submit</button>
+                            </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}

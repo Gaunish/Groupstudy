@@ -1,0 +1,57 @@
+#navtitle
+{
+    font-family : "apple chancery";
+    font-weight: 530;
+    font-size : 40px;
+    color : #3333cc;
+    margin-left : 5px;
+}
+
+#navbar1
+{
+    padding-top : 8px;
+    padding-left : 70px;
+    padding-bottom : 8px;
+
+}
+
+body
+{
+    overflow-x: hidden;
+    background-color: #d2d2d2;
+}
+
+#column
+{
+    float : left;
+    width : 50%;
+    padding-left: 120px;
+}
+
+#content1
+{
+    font-family : arial;
+    font-size : 55px;
+    color : black;
+    margin-bottom: 10px;
+}
+
+#content2
+{
+    font-family : arial;
+    font-size : 20px;
+    color : #b3b3b3;
+}
+
+#navc
+{
+    margin-left: 80px;
+}
+
+#searcnav
+{
+    padding-left : 230px;
+    margin-bottom : 100px;
+    margin-top : 10px;
+    color : #b3b3b3;;
+}

@@ -1,0 +1,272 @@
+{% extends 'layout2.html' %}
+
+{% block title %}
+    Create Topic
+{% endblock %}
+
+{% block style %}
+        body
+        {
+            background: #DAE0E6;
+        }
+
+
+        #sideheader
+        {
+            color : white;
+            font-size : 40px;
+            text-align: center;
+            padding-top: 15px;
+            font-family: 'Arial';
+            padding-bottom : 85px;
+            margin-top : 40px;
+        }
+
+        #sidernav
+        {
+            background: #4d4d4d;
+            min-height : 100vh;
+            height : 100%;
+        }
+
+        li
+        {
+            color : white;
+            font-size : 20px;
+            text-align : center;
+            height : 40px;
+            padding-top : 5px;
+            margin-bottom : 15px;
+            border-radius : 5px;
+        }
+
+        li:hover
+        {
+            color : #4d4d4d;
+            background : white;
+        }
+
+        #visiting
+        {
+            color : #0066cc;
+            background : white;
+            border-right : 6px solid #ffa64d;
+        }
+
+        a, a:hover
+        {
+            color: inherit;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .cardmid
+        {
+            width : 1100px; 
+            height : 240px; 
+            margin-top : 40px;
+            margin-left : 50px;    
+        }
+        
+        .svg-like
+        {
+            margin-left : 35px;
+        }
+
+        .svg-dislike
+        {
+            margin-left : 10px;
+        }
+
+        .follow_btn
+        {
+            width : 70px;
+            font-size : 12px;
+            padding-top : 3.5px;
+            padding-bottom : 3.5px;
+            border-radius : 40px;
+            margin-top : 5px;
+        }
+
+        .titled
+        {
+            font-weight : bold;
+            font-size : 20px;
+        }
+
+        .img-icon
+        {
+            width:22px;
+            height:22px;
+            
+        }
+       
+        .img-icon2
+        {
+            width:25px;
+            height:25px;   
+        }
+
+        .img-comment
+        {
+            width:22px;
+            height:22px;
+            margin-left : 10px;
+
+        }
+
+        .svg-button
+        {
+            background : white;
+            border : 0px white;
+            margin-bottom : 10px;
+            margin-top : -1px;
+            border-radius : 4px;
+            width : 28px;
+            height : 28px;
+            padding : 1px;
+        }
+
+        .post-info
+        {
+            font-size: 13.2px;
+            color : gray;
+            font-family: Noto Sans,Arial,sans-serif;
+            padding-top : 5px;
+            padding-left : 20px;
+            margin-left : 2px;
+        }
+
+        .card-title2
+        {
+            margin-top : 0px;
+            padding-left : 25px;
+        }
+
+        .desc-body
+        {
+            overflow : hidden;
+            -webkit-mask-image: linear-gradient(180deg,#000 60%,transparent);
+            height: 80px;
+            padding-left : 25px;
+        }
+
+        .img_view
+        {
+            height : 120px; 
+            width : 165px;
+            margin-left : 15px;
+        }
+        
+        img.noStretch{
+        object-fit: cover;
+        }
+
+
+{% endblock %}
+
+{% block main %}
+        <div class="row">
+            <div class="col-2">
+                  <nav id = "sidernav">
+                              <div id = "sideheader">
+                                    <h1>Questions</h1>
+                              </div>
+
+                              <ul class = "list-unstyled">
+                                    <li>
+                                          <a href="/create_ques" class = "sidea">Create</a>
+                                    </li>
+                                    
+                                    <li id = "visiting">
+                                          <a href="/follow_ques" class="sidea"> Following </a>
+                                    </li>
+
+                                    <li>
+                                          <a href="/created_ques" class="sidea"> Created </a>
+                                    </li>
+                              </ul>
+                  
+                  </nav>
+            </div>
+            <div class = "col-10">
+               <div style = "margin-top : 100px;"></div>
+               {%for row in rows%}
+                    <div class = "card text-left cardmid">
+                            <div class = "row">
+                            <div class = "col-11">
+                                    <div class = "post-info">
+                                    <div style = "color:black"><b>{{row[11]}}</b></div>
+                                    Posted by 
+                                    {{row[10]}}
+                                    {{row[13]}}
+                                    </div>
+                            </div>
+                            <div class = "col-0.9">
+                            <form action = "{{url_for('dynamic_topic', topic_id = row[4])}}" method="post">
+                                {%if row[12] == True%}
+                                <button class="btn btn-outline-primary follow_btn" type="submit">Disjoin</button> 
+                                {%else%}
+                                <button class="btn btn-primary follow_btn" type="submit">+ Join</button>  
+                                {%endif%}
+                            </form>
+                            </div>
+                            </div>
+                            <a class = "carded" href = "{{ url_for('dynamicq', quest_id = row[0],title = row[1], time = row[3], topic_id = row[4])}}">
+                                <div class="card-body">  
+                                    <div class = "row">
+                                        {% if row[14] != ""%}
+                                            <div class = "col-1.5">
+                                            <img src = "{{row[14]}}" class = "img_view noStretch">
+                                            </div>
+                                        {% endif %}
+
+                                    <div class = "col-10">    
+                                        <h3 class="card-title2">{{row[1]}}</h3>
+                                        <div class = "desc-body">{{row[2]}}</div>      
+                                    </div>
+                                    </div>               
+                                </div>
+                                <div style = "overflow-y:visible;" class = "row">
+                                
+                                    {%if row[9] == 'true'%}
+                                        <div class = "svg-button svg-like" name = "like_dislike" value = "remove_like"><svg xmlns="http://www.w3.org/2000/svg" class ="img-icon2" x="0px" y="0px"
+                                        width="64" height="64"
+                                        viewBox="0 0 172 172"
+                                        style=" fill:#000000;"><g transform="translate(7.224,7.224) scale(0.916,0.916)"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="none" stroke-linecap="butt" stroke-linejoin="none" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g fill="#3498db" stroke="#ffffff" stroke-width="16" stroke-linejoin="round"><path d="M87.8275,10.32c9.32563,0 18.8125,18.00625 18.8125,30.96c0,5.56313 -3.49375,17.44188 -5.59,24.08h50.31c7.59219,0 13.76,6.16781 13.76,13.76c0,4.99875 -2.67406,9.41969 -6.665,11.825c2.01563,2.39188 3.225,5.44219 3.225,8.815c0,4.99875 -2.67406,9.41969 -6.665,11.825c2.01563,2.39188 3.225,5.44219 3.225,8.815c0,5.99313 -3.88344,11.12625 -9.245,13.0075c1.46469,2.19031 2.365,4.79719 2.365,7.6325c0,7.59219 -6.16781,13.76 -13.76,13.76h-65.36c-4.48812,0 -8.89562,-2.87562 -10.32,-6.88v-72.24l13.76,-35.26v-26.66c0,-1.89469 1.54531,-3.44 3.44,-3.44zM51.6,65.36c1.89469,0 3.44,1.54531 3.44,3.44v82.56c0,1.90813 -1.54531,3.44 -3.44,3.44h-30.96c-1.73344,0 -3.225,-1.29 -3.44,-3.01l-10.32,-82.56c-0.12094,-0.98094 0.20156,-1.94844 0.86,-2.6875c0.65844,-0.73906 1.59906,-1.1825 2.58,-1.1825zM34.4,135.88c0,2.84875 2.31125,5.16 5.16,5.16c2.84875,0 5.16,-2.31125 5.16,-5.16c0,-2.84875 -2.31125,-5.16 -5.16,-5.16c-2.84875,0 -5.16,2.31125 -5.16,5.16z"></path></g><path d="M0,172v-172h172v172z" fill="none" stroke="none" stroke-width="1" stroke-linejoin="miter"></path><path d="" fill="none" stroke="none" stroke-width="1" stroke-linejoin="miter"></path><g fill="#3498db" stroke="none" stroke-width="1" stroke-linejoin="miter"><path d="M79.12,10.32c-1.89469,0 -3.44,1.54531 -3.44,3.44v26.66l-13.76,35.26v72.24c1.42438,4.00438 5.83188,6.88 10.32,6.88h65.36c7.59219,0 13.76,-6.16781 13.76,-13.76c0,-2.83531 -0.90031,-5.44219 -2.365,-7.6325c5.36156,-1.88125 9.245,-7.01437 9.245,-13.0075c0,-3.37281 -1.20937,-6.42312 -3.225,-8.815c3.99094,-2.40531 6.665,-6.82625 6.665,-11.825c0,-3.37281 -1.20937,-6.42312 -3.225,-8.815c3.99094,-2.40531 6.665,-6.82625 6.665,-11.825c0,-7.59219 -6.16781,-13.76 -13.76,-13.76h-50.31c2.09625,-6.63812 5.59,-18.51687 5.59,-24.08c0,-12.95375 -9.48687,-30.96 -18.8125,-30.96zM10.32,65.36c-0.98094,0 -1.92156,0.44344 -2.58,1.1825c-0.65844,0.73906 -0.98094,1.70656 -0.86,2.6875l10.32,82.56c0.215,1.72 1.70656,3.01 3.44,3.01h30.96c1.89469,0 3.44,-1.53187 3.44,-3.44v-82.56c0,-1.89469 -1.54531,-3.44 -3.44,-3.44zM39.56,130.72c2.84875,0 5.16,2.31125 5.16,5.16c0,2.84875 -2.31125,5.16 -5.16,5.16c-2.84875,0 -5.16,-2.31125 -5.16,-5.16c0,-2.84875 2.31125,-5.16 5.16,-5.16z"></path></g><path d="" fill="none" stroke="none" stroke-width="1" stroke-linejoin="miter"></path><path d="" fill="none" stroke="none" stroke-width="1" stroke-linejoin="miter"></path></g></g></svg></div>
+                                    {%else%}
+                                        <div type = "submit" class = "svg-button svg-like" name = "like_dislike" value = "like"><svg xmlns="http://www.w3.org/2000/svg" class ="img-icon" x="0px" y="0px"
+                                        width="64" height="64"
+                                        viewBox="0 0 172 172"
+                                        style=" fill:#000000;"><g transform="translate(7.138,7.138) scale(0.917,0.917)"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="none" stroke-linecap="butt" stroke-linejoin="none" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g fill="#ffffff" stroke="#3498db" stroke-width="16" stroke-linejoin="round"><path d="M87.8275,10.32c9.32563,0 18.8125,18.00625 18.8125,30.96c0,5.56313 -3.49375,17.44188 -5.59,24.08h50.31c7.59219,0 13.76,6.16781 13.76,13.76c0,4.99875 -2.67406,9.41969 -6.665,11.825c2.01563,2.39188 3.225,5.44219 3.225,8.815c0,4.99875 -2.67406,9.41969 -6.665,11.825c2.01563,2.39188 3.225,5.44219 3.225,8.815c0,5.99313 -3.88344,11.12625 -9.245,13.0075c1.46469,2.19031 2.365,4.79719 2.365,7.6325c0,7.59219 -6.16781,13.76 -13.76,13.76h-65.36c-4.48812,0 -8.89562,-2.87562 -10.32,-6.88v-72.24l13.76,-35.26v-26.66c0,-1.89469 1.54531,-3.44 3.44,-3.44zM51.6,65.36c1.89469,0 3.44,1.54531 3.44,3.44v82.56c0,1.90813 -1.54531,3.44 -3.44,3.44h-30.96c-1.73344,0 -3.225,-1.29 -3.44,-3.01l-10.32,-82.56c-0.12094,-0.98094 0.20156,-1.94844 0.86,-2.6875c0.65844,-0.73906 1.59906,-1.1825 2.58,-1.1825zM34.4,135.88c0,2.84875 2.31125,5.16 5.16,5.16c2.84875,0 5.16,-2.31125 5.16,-5.16c0,-2.84875 -2.31125,-5.16 -5.16,-5.16c-2.84875,0 -5.16,2.31125 -5.16,5.16z"></path></g><path d="M0,172v-172h172v172z" fill="none" stroke="none" stroke-width="1" stroke-linejoin="miter"></path><path d="" fill="none" stroke="none" stroke-width="1" stroke-linejoin="miter"></path><g fill="#ffffff" stroke="none" stroke-width="1" stroke-linejoin="miter"><path d="M79.12,10.32c-1.89469,0 -3.44,1.54531 -3.44,3.44v26.66l-13.76,35.26v72.24c1.42438,4.00438 5.83188,6.88 10.32,6.88h65.36c7.59219,0 13.76,-6.16781 13.76,-13.76c0,-2.83531 -0.90031,-5.44219 -2.365,-7.6325c5.36156,-1.88125 9.245,-7.01437 9.245,-13.0075c0,-3.37281 -1.20937,-6.42312 -3.225,-8.815c3.99094,-2.40531 6.665,-6.82625 6.665,-11.825c0,-3.37281 -1.20937,-6.42312 -3.225,-8.815c3.99094,-2.40531 6.665,-6.82625 6.665,-11.825c0,-7.59219 -6.16781,-13.76 -13.76,-13.76h-50.31c2.09625,-6.63812 5.59,-18.51687 5.59,-24.08c0,-12.95375 -9.48687,-30.96 -18.8125,-30.96zM10.32,65.36c-0.98094,0 -1.92156,0.44344 -2.58,1.1825c-0.65844,0.73906 -0.98094,1.70656 -0.86,2.6875l10.32,82.56c0.215,1.72 1.70656,3.01 3.44,3.01h30.96c1.89469,0 3.44,-1.53187 3.44,-3.44v-82.56c0,-1.89469 -1.54531,-3.44 -3.44,-3.44zM39.56,130.72c2.84875,0 5.16,2.31125 5.16,5.16c0,2.84875 -2.31125,5.16 -5.16,5.16c-2.84875,0 -5.16,-2.31125 -5.16,-5.16c0,-2.84875 2.31125,-5.16 5.16,-5.16z"></path></g><path d="" fill="none" stroke="none" stroke-width="1" stroke-linejoin="miter"></path></g></g></svg></div>
+                                    {%endif%}
+                                    {{row[7]}}
+                                    {%if row[9] == 'false'%}
+                                        <div class = "svg-button svg-dislike" name = "like_dislike" value = "remove_dislike"><svg xmlns="http://www.w3.org/2000/svg" class ="img-icon2" x="0px" y="0px"
+                                        width="64" height="64"
+                                        viewBox="0 0 172 172"
+                                        style=" fill:#000000;"><g transform="translate(4.73,4.73) scale(0.945,0.945)"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="none" stroke-linecap="butt" stroke-linejoin="none" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g fill="#ffffff" stroke="#ffffff" stroke-width="10" stroke-linejoin="round"><path d="M28.66667,14.33333c3.956,0 7.16667,3.21067 7.16667,7.16667v71.66667c0,3.956 -3.21067,7.16667 -7.16667,7.16667h-14.33333c-3.956,0 -7.16667,-3.21067 -7.16667,-7.16667v-71.66667c0,-3.956 3.21067,-7.16667 7.16667,-7.16667zM128.94401,14.33333c5.72617,0 10.91404,3.41089 13.17155,8.67839l21.55599,50.18067c0.76683,1.7845 1.16178,3.71278 1.16178,5.65494v14.31934c0,7.91917 -6.41417,14.33333 -14.33333,14.33333h-45.51953l7.12467,32.71191c0.78833,3.612 -0.33728,7.37898 -2.96744,9.96615c-4.214,4.14233 -10.98102,4.11534 -15.15918,-0.06999l-39.62663,-39.71061c-2.68033,-2.6875 -4.18522,-6.32179 -4.18522,-10.12011v-71.61068c0,-7.91917 6.41417,-14.33333 14.33333,-14.33333z"></path></g><path d="M0,172v-172h172v172z" fill="none" stroke="none" stroke-width="1" stroke-linejoin="miter"></path><path d="" fill="none" stroke="none" stroke-width="1" stroke-linejoin="miter"></path><path d="" fill="none" stroke="none" stroke-width="1" stroke-linejoin="miter"></path><g fill="#3498db" stroke="none" stroke-width="1" stroke-linejoin="miter"><path d="M14.33333,14.33333c-3.956,0 -7.16667,3.21067 -7.16667,7.16667v71.66667c0,3.956 3.21067,7.16667 7.16667,7.16667h14.33333c3.956,0 7.16667,-3.21067 7.16667,-7.16667v-71.66667c0,-3.956 -3.21067,-7.16667 -7.16667,-7.16667zM64.5,14.33333c-7.91917,0 -14.33333,6.41417 -14.33333,14.33333v71.61068c0,3.79833 1.50489,7.43261 4.18522,10.12011l39.62663,39.71061c4.17817,4.18533 10.94518,4.21232 15.15918,0.06999c2.63017,-2.58717 3.75578,-6.35415 2.96744,-9.96615l-7.12467,-32.71191h45.51953c7.91917,0 14.33333,-6.41417 14.33333,-14.33333v-14.31934c0,-1.94217 -0.39495,-3.87044 -1.16178,-5.65494l-21.55599,-50.18067c-2.2575,-5.2675 -7.44538,-8.67839 -13.17155,-8.67839z"></path></g><path d="" fill="none" stroke="none" stroke-width="1" stroke-linejoin="miter"></path></g></g></svg></div>     
+                                    {%else%}
+                                        <div class = "svg-button svg-dislike" name = "like_dislike" value = "dislike"><svg xmlns="http://www.w3.org/2000/svg"class ="img-icon"  x="0px" y="0px"
+                                        width="64" height="64"
+                                        viewBox="0 0 172 172"
+                                        style=" fill:#000000;"><g transform="translate(5.676,5.676) scale(0.934,0.934)"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="none" stroke-linecap="butt" stroke-linejoin="none" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g fill="#ffffff" stroke="#3498db" stroke-width="12" stroke-linejoin="round"><path d="M28.66667,14.33333c3.956,0 7.16667,3.21067 7.16667,7.16667v71.66667c0,3.956 -3.21067,7.16667 -7.16667,7.16667h-14.33333c-3.956,0 -7.16667,-3.21067 -7.16667,-7.16667v-71.66667c0,-3.956 3.21067,-7.16667 7.16667,-7.16667zM128.94401,14.33333c5.72617,0 10.91404,3.41089 13.17155,8.67839l21.55599,50.18067c0.76683,1.7845 1.16178,3.71278 1.16178,5.65494v14.31934c0,7.91917 -6.41417,14.33333 -14.33333,14.33333h-45.51953l7.12467,32.71191c0.78833,3.612 -0.33728,7.37898 -2.96744,9.96615c-4.214,4.14233 -10.98102,4.11534 -15.15918,-0.06999l-39.62663,-39.71061c-2.68033,-2.6875 -4.18522,-6.32179 -4.18522,-10.12011v-71.61068c0,-7.91917 6.41417,-14.33333 14.33333,-14.33333z"></path></g><path d="M0,172v-172h172v172z" fill="none" stroke="none" stroke-width="1" stroke-linejoin="miter"></path><path d="" fill="none" stroke="none" stroke-width="1" stroke-linejoin="miter"></path><path d="" fill="none" stroke="none" stroke-width="1" stroke-linejoin="miter"></path><g fill="#ffffff" stroke="none" stroke-width="1" stroke-linejoin="miter"><path d="M14.33333,14.33333c-3.956,0 -7.16667,3.21067 -7.16667,7.16667v71.66667c0,3.956 3.21067,7.16667 7.16667,7.16667h14.33333c3.956,0 7.16667,-3.21067 7.16667,-7.16667v-71.66667c0,-3.956 -3.21067,-7.16667 -7.16667,-7.16667zM64.5,14.33333c-7.91917,0 -14.33333,6.41417 -14.33333,14.33333v71.61068c0,3.79833 1.50489,7.43261 4.18522,10.12011l39.62663,39.71061c4.17817,4.18533 10.94518,4.21232 15.15918,0.06999c2.63017,-2.58717 3.75578,-6.35415 2.96744,-9.96615l-7.12467,-32.71191h45.51953c7.91917,0 14.33333,-6.41417 14.33333,-14.33333v-14.31934c0,-1.94217 -0.39495,-3.87044 -1.16178,-5.65494l-21.55599,-50.18067c-2.2575,-5.2675 -7.44538,-8.67839 -13.17155,-8.67839z"></path></g><path d="" fill="none" stroke="none" stroke-width="1" stroke-linejoin="miter"></path><path d="" fill="none" stroke="none" stroke-width="1" stroke-linejoin="miter"></path><path d="" fill="none" stroke="none" stroke-width="1" stroke-linejoin="miter"></path></g></g></svg></div>                    
+                                    {%endif%}
+                                    {{row[8]}}
+                
+                                <img src="https://img.icons8.com/plumpy/24/000000/topic.png"/ class = "img-comment">         
+                                {{row[6]}}
+                                {%if row[6] == 1 or row[6] == 0%}
+                                    Comment
+                                {%else%}
+                                    Comments
+                                {%endif%}
+                                </div>
+                            </a>
+                    </div>
+                
+            {%endfor%}
+            <div style = "margin-bottom : 20px;">
+            </div>
+        </div>
+{% endblock %}
